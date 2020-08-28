@@ -20,6 +20,11 @@ Usage:
 
 """
 
+__version__ = "0.0.1"
+__author__ = 'wazeem'
+
+
+import logging
 import argparse
 from http.server import HTTPServer
 
@@ -36,11 +41,8 @@ def main(server=HTTPServer, handler_class=SimpleHTTPRequestHandler):
     args = parser.parse_args()
 
     # binding command line args
-    ip_address = args.ip
-    port_number = args.port
-
     # Setting server
-    server_address = (ip_address, port_number)
+    server_address = (args.ip, args.port)  # (ip, port)
     logging.basicConfig(level=logging.INFO)
     
     httpd = server(server_address, handler_class)
